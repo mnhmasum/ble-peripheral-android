@@ -1,14 +1,26 @@
 import android.Manifest
 import android.app.Application
-import android.bluetooth.*
-import android.bluetooth.le.*
+import android.bluetooth.BluetoothAdapter
+import android.bluetooth.BluetoothDevice
+import android.bluetooth.BluetoothGatt
+import android.bluetooth.BluetoothGattCharacteristic
+import android.bluetooth.BluetoothGattServer
+import android.bluetooth.BluetoothGattServerCallback
+import android.bluetooth.BluetoothGattService
+import android.bluetooth.BluetoothManager
+import android.bluetooth.BluetoothProfile
+import android.bluetooth.le.AdvertiseCallback
+import android.bluetooth.le.AdvertiseData
+import android.bluetooth.le.AdvertiseSettings
+import android.bluetooth.le.BluetoothLeAdvertiser
 import android.content.Context
 import android.os.ParcelUuid
 import android.util.Log
 import androidx.annotation.RequiresPermission
 import androidx.lifecycle.AndroidViewModel
 import java.nio.charset.StandardCharsets
-import java.util.*
+import java.util.UUID
+
 
 class PeripheralViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -53,6 +65,13 @@ class PeripheralViewModel(application: Application) : AndroidViewModel(applicati
             .setConnectable(true)
             .setTimeout(0)
             .build()
+
+        /*val adapter = BluetoothAdapter.getDefaultAdapter()
+        adapter.setName("Android BLE Peripheral")*/
+
+        val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
+        val adapter: BluetoothAdapter? = bluetoothManager.adapter
+        adapter?.setName("Android Peripheral BLE Simulator")
 
         // Advertising data
         val advertiseData = AdvertiseData.Builder()
