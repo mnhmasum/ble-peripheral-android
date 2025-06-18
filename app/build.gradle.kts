@@ -58,6 +58,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.9.1")
 
     implementation("com.google.dagger:hilt-android:2.51.1") // Use the same version as the plugin
     kapt("com.google.dagger:hilt-compiler:2.51.1")

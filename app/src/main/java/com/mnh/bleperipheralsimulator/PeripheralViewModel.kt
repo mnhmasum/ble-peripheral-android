@@ -11,6 +11,8 @@ class PeripheralViewModel @Inject constructor(private val peripheralGattReposito
 
     private val TAG = "PeripheralViewModel"
 
+    val centralState = peripheralGattRepository.centralState
+
     @RequiresPermission(allOf = [Manifest.permission.BLUETOOTH_ADVERTISE, Manifest.permission.BLUETOOTH_CONNECT])
     fun startPeripheral() {
         peripheralGattRepository.startPeripheral()
