@@ -119,6 +119,7 @@ class PeripheralGattRepository @Inject constructor(@ApplicationContext val conte
         ) {
             val message = String(value, StandardCharsets.UTF_8)
             Log.d(TAG, "Central wrote: $message")
+
             if (responseNeeded) {
                 gattServer?.sendResponse(device, requestId, BluetoothGatt.GATT_SUCCESS, offset, value)
             }
@@ -129,7 +130,7 @@ class PeripheralGattRepository @Inject constructor(@ApplicationContext val conte
         override fun onStartSuccess(settingsInEffect: AdvertiseSettings?) {
             super.onStartSuccess(settingsInEffect)
             Log.d(TAG, "Advertising started successfully")
-            updateCentralState("Advertising started...")
+            updateCentralState("Advertising is started")
         }
 
         override fun onStartFailure(errorCode: Int) {
