@@ -40,8 +40,8 @@ class PeripheralGattRepository @Inject constructor(@ApplicationContext val conte
 
     val centralState: StateFlow<String> get() = _centralState
 
-    fun updateCentralState(newName: String) {
-        _centralState.value = newName
+    private fun updateCentralState(newState: String) {
+        _centralState.value = newState
     }
 
     private val characteristic = BluetoothGattCharacteristic(
