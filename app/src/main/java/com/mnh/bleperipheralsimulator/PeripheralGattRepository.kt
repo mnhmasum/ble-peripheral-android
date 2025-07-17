@@ -77,7 +77,7 @@ class PeripheralGattRepository @Inject constructor(@ApplicationContext val conte
 
         val bluetoothManager = context.getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager
         val adapter: BluetoothAdapter? = bluetoothManager.adapter
-        adapter?.setName("My XYZ BLE")
+        adapter?.setName("BLE Simulator")
 
         // Advertising data
         val advertiseData = AdvertiseData.Builder()
